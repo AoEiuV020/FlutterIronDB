@@ -4,7 +4,7 @@
 
 [![img](https://img.shields.io/github/release/AoEiuV020/FlutterIronDB.svg)](https://github.com/AoEiuV020/FlutterIronDB/releases)
 [![Using melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos)
-[![Main version](https://img.shields.io/pub/v/FlutterIronDB.svg)](https://pub.dev/packages/iron_db)
+[![Main version](https://img.shields.io/pub/v/iron_db.svg)](https://pub.dev/packages/iron_db)
 
 ## Features
 
