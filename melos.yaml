@@ -1,5 +1,5 @@
-name: new_project
-repository: https://github.com/AoEiuV020/new_project
+name: iron_db
+repository: https://github.com/AoEiuV020/FlutterIronDB
 
 packages:
   - apps/*

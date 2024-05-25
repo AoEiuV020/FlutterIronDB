@@ -6,4 +6,4 @@ apps_dir=$ROOT/apps
 packages_dir=$ROOT/packages
 organization=com.aoeiuv020
 app_name=example
-package_name=new_project
+package_name=iron_db
