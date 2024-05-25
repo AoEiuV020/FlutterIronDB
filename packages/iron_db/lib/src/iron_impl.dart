@@ -15,14 +15,14 @@ class IronImpl implements IronInterface {
   late Database db = getDefaultDatabase(base, keySerializer, dataSerializer);
 
   @override
-  Future<void> init({String? base,
-    KeySerializer? keySerializer,
-    DataSerializer? dataSerializer}) async {
+  Future<void> init(
+      {String? base,
+      KeySerializer? keySerializer,
+      DataSerializer? dataSerializer}) async {
     this.base = base ??= await getDefaultBase();
     this.keySerializer = keySerializer ?? const ReplaceFileSeparator();
     this.dataSerializer = dataSerializer ?? const JsonDataSerializer();
   }
-
 
   @override
   Database assetsDB([String assetsBase = 'assets/IronDB']) {
