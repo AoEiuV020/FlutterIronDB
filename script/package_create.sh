@@ -7,5 +7,6 @@ if [ ! -d "$packages_dir" ]; then
     mkdir -p "$packages_dir"
 fi
 cd "$packages_dir"
-dart create --template=package "$package_name"
+flutter create --template=package "$package_name"
+echo 'include: package:flutter_lints/flutter.yaml' > "$package_name"/analysis_options.yaml
 cat "$ROOT"/analysis_options.yaml >> "$package_name"/analysis_options.yaml
