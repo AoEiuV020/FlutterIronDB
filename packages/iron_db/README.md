@@ -1,39 +1,39 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# iron_db
+废铁key-value数据库，  
+主打的是简单方便，  
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+[![img](https://img.shields.io/github/release/AoEiuV020/FlutterIronDB.svg)](https://github.com/AoEiuV020/FlutterIronDB/releases)
+[![Using melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos)
+[![Main version](https://img.shields.io/pub/v/FlutterIronDB.svg)](https://pub.dev/packages/iron_db)
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+1. 多级文件形式保存数据，一个key就是一个文件，
+1. 默认文件路径是简单把key删除不能作为路径的字符，可自定义路径序列化方式，
+1. 支持基本数据类型，使用json序列化，可修改，
+1. 字符串类型数据会原原本本写入到文件，utf8编码，可修改，
+1. 支持从assets读取数据，并可以命令行程序写入数据到assets目录，
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```shell
+flutter pub add iron_db
 ```
 
-## Additional information
+## Usage
+[iron_db_test.dart](./test/iron_db_test.dart)
+```dart
+await Iron.init();
+final db = Iron.db.sub('string');
+String? value = 'value';
+await db.write('key', value);
+value = await db.read<String>('key');
+expect(value, 'value');
+```
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## TODO
+- 添加示例app，
+- web支持，使用SharedPreferences存取数据，目前只有assets读取，
+- web异步处理数据支持，目前只有isolate异步支持，
+- 优化二进制数据直接存取支持，目前应该会当成列表经过json序列化保存，
+- 支持Stream流数据存取，暂不确定需求，没有设计，

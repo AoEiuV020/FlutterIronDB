@@ -1,6 +1,6 @@
 name: iron_db
-description: "A new Flutter package project."
-version: 1.0.0
+description: "A simple and convenient key-value database."
+version: 0.0.1
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
