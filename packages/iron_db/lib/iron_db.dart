@@ -1,7 +1,5 @@
 library iron_db;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/iron.dart';
+export 'src/database.dart';
+export 'src/serialize.dart';
