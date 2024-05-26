@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iron_db/iron_db.dart';
+import 'package:logging/logging.dart';
 
-enum BasicKey {
+enum Keys {
   string,
   multiline,
   number,
@@ -12,6 +13,7 @@ enum BasicKey {
 }
 
 class BasicController extends GetxController {
+  late final logger = Logger('Basic');
   late final db = getBaseDatabase().sub('Basic');
   final textControllerString = TextEditingController();
   final textControllerMultiline = TextEditingController();
@@ -46,29 +48,33 @@ class BasicController extends GetxController {
   }
 
   void loadData() async {
-    textControllerString.text =
-        await db.read<String>(BasicKey.string.name) ?? '';
+    textControllerString.text = await db.read<String>(Keys.string.name) ?? '';
     textControllerMultiline.text =
-        await db.read<String>(BasicKey.multiline.name) ?? '';
+        await db.read<String>(Keys.multiline.name) ?? '';
     textControllerNumber.text =
-        (await db.read<int>(BasicKey.number.name))?.toString() ?? '';
-    obsChecked.value = await db.read<bool>(BasicKey.checked.name) ?? false;
+        (await db.read<int>(Keys.number.name))?.toString() ?? '';
+    obsChecked.value = await db.read<bool>(Keys.checked.name) ?? false;
     obsSeekBarValue.value =
-        await db.read<double>(BasicKey.seekBarValue.name) ?? 0.0;
+        await db.read<double>(Keys.seekBarValue.name) ?? 0.0;
     appendToResult('读取成功');
   }
 
   void saveData() {
-    db.write(BasicKey.string.name, textControllerString.text);
-    db.write(BasicKey.multiline.name, textControllerMultiline.text);
+    try {
+    db.write(Keys.string.name, textControllerString.text);
+    db.write(Keys.multiline.name, textControllerMultiline.text);
     db.write(
-        BasicKey.number.name,
+        Keys.number.name,
         textControllerNumber.text.isEmpty
             ? null
             : int.parse(textControllerNumber.text));
-    db.write(BasicKey.checked.name, obsChecked.value);
-    db.write(BasicKey.seekBarValue.name, obsSeekBarValue.value);
+    db.write(Keys.checked.name, obsChecked.value);
+    db.write(Keys.seekBarValue.name, obsSeekBarValue.value);
     appendToResult('保存成功: ${db.getPath()}');
+    } catch (e, s) {
+      logger.severe('保存失败', e, s);
+      appendToResult('保存失败: $e');
+    }
   }
 
   void clearData() {

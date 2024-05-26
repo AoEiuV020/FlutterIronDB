@@ -5,6 +5,8 @@ import '../modules/Assets/controllers/assets_controller.dart';
 import '../modules/Basic/bindings/basic_binding.dart';
 import '../modules/Basic/controllers/basic_controller.dart';
 import '../modules/Basic/views/basic_view.dart';
+import '../modules/Binary/bindings/binary_binding.dart';
+import '../modules/Binary/views/binary_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 
@@ -30,6 +32,11 @@ class AppPages {
       name: _Paths.ASSETS,
       page: () => const BasicView<AssetsController>(),
       binding: AssetsBinding(),
+    ),
+    GetPage(
+      name: _Paths.BINARY,
+      page: () => const BinaryView(),
+      binding: BinaryBinding(),
     ),
   ];
 }

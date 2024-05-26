@@ -21,6 +21,10 @@ class HomeView extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
+                onPressed: () => Get.toNamed(Routes.BINARY),
+                child: const Text('二进制数据存取'),
+              ),
+              ElevatedButton(
                 onPressed: () => Get.toNamed(Routes.BASIC),
                 child: const Text('基本数据类型'),
               ),
