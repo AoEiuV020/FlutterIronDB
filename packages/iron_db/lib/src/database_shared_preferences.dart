@@ -26,7 +26,7 @@ class DatabaseSharedPreferences implements Database {
   }
 
   @override
-  String getPath() => '$base/$prefix';
+  String getPath() => '${base}_$prefix';
 
   @override
   Database sub(String table) {

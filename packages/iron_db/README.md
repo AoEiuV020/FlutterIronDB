@@ -33,7 +33,6 @@ expect(value, 'value');
 ```
 
 ## TODO
-- web支持，使用SharedPreferences存取数据，目前只有assets读取，
 - web异步处理数据支持，目前只有isolate异步支持，
 - 优化二进制数据直接存取支持，目前应该会当成列表经过json序列化保存，
 - 支持Stream流数据存取，暂不确定需求，没有设计，
