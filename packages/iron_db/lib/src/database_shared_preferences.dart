@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'database.dart';
@@ -43,7 +46,13 @@ class DatabaseSharedPreferences implements Database {
     if (str == null) {
       return null;
     }
-    return dataSerializer.deserialize<T>(str);
+    final Object data;
+    if (T == Uint8List) {
+      data = base64.decode(str);
+    } else {
+      data = str;
+    }
+    return dataSerializer.deserialize<T>(data);
   }
 
   @override
@@ -54,7 +63,14 @@ class DatabaseSharedPreferences implements Database {
       await prefs.remove(realKey);
       return;
     }
-    final str = dataSerializer.serialize<T>(value);
+    final data = dataSerializer.serialize<T>(value);
+    final String str;
+    if (data is String) {
+      str = data;
+    } else {
+      assert(data is Uint8List);
+      str = base64.encode(data);
+    }
     await prefs.setString(realKey, str);
   }
 

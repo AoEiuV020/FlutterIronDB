@@ -58,6 +58,9 @@ class DatabaseAssets implements Database {
       // The asset does not exist or has empty data.
       return null;
     }
+    if (T == Uint8List) {
+      return bundle.buffer.asUint8List() as T;
+    }
     final ret = await IsolateTransformer().convert(
         bundle,
         (e) => e

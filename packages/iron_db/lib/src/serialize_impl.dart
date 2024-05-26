@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 
@@ -32,21 +33,31 @@ class AssetsFilenameSerializer implements KeySerializer {
   }
 }
 
-class JsonDataSerializer implements DataSerializer {
-  const JsonDataSerializer();
+/// 默认的序列化器，
+/// 字符串类型不处理，
+/// 基本类型使用json序列化，
+class DefaultDataSerializer implements DataSerializer {
+  const DefaultDataSerializer();
 
   @override
-  T deserialize<T>(String str) {
+  T deserialize<T>(dynamic data) {
+    assert(data is String || data is Uint8List);
     if (T == String) {
-      return str as T;
+      return data as T;
     }
-    return jsonDecode(str) as T;
+    if (T == Uint8List) {
+      return data as T;
+    }
+    return jsonDecode(data) as T;
   }
 
   @override
-  String serialize<T>(T value) {
+  dynamic serialize<T>(T value) {
     if (T == String) {
       return value as String;
+    }
+    if (T == Uint8List) {
+      return value as Uint8List;
     }
     return jsonEncode(value);
   }

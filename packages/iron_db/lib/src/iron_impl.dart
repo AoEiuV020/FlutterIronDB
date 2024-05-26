@@ -21,7 +21,7 @@ class IronImpl implements IronInterface {
       DataSerializer? dataSerializer}) async {
     this.base = base ??= await getDefaultBase();
     this.keySerializer = keySerializer ?? const ReplaceFileSeparator();
-    this.dataSerializer = dataSerializer ?? const JsonDataSerializer();
+    this.dataSerializer = dataSerializer ?? const DefaultDataSerializer();
   }
 
   @override

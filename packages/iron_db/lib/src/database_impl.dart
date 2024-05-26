@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:path/path.dart' as path;
 
@@ -34,6 +35,9 @@ class DatabaseImpl implements Database {
     if (!await file.exists()) {
       return null;
     }
+    if (T == Uint8List) {
+      return await file.readAsBytes() as T;
+    }
     return await IsolateTransformer().convert(
         file,
         (e) => e
@@ -53,9 +57,14 @@ class DatabaseImpl implements Database {
       return;
     }
     await IsolateTransformer().run(value, (T value) async {
+      final data = dataSerializer.serialize<T>(value);
       final write = file.openWrite();
-      final str = dataSerializer.serialize<T>(value);
-      write.write(str);
+      if (data is String) {
+        write.write(data);
+      } else {
+        assert(data is Uint8List);
+        write.add(data);
+      }
       await write.flush();
       await write.close();
     });
