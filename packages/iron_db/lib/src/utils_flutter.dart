@@ -6,7 +6,8 @@ import 'serialize.dart';
 import 'database_assets.dart';
 import 'database_impl.dart';
 
-// linux: /home/username/.local/share/com.aoeiuv020.taiko_songs
+/// linux: /home/<username>/.local/share/<organization>.<app_name>
+/// mac: /Users/<username>/Library/Containers/<organization>.<app_name>/Data/Library/Application Support/<organization>.<app_name>
 Future<String> getDefaultBase() async {
   final folder = await getApplicationSupportDirectory();
   return path.join(folder.path, 'IronDB');

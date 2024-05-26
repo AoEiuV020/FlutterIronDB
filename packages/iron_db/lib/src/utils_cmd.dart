@@ -7,7 +7,8 @@ import 'serialize.dart';
 import 'database_assets_io.dart';
 import 'database_impl.dart';
 
-// linux: /tmp
+/// linux: /tmp
+/// mac: /Users/<username>/Library/Containers/<organization>.<app_name>/Data/tmp
 Future<String> getDefaultBase() async {
   final folder = Directory.systemTemp;
   return path.join(folder.path, 'IronDB');
