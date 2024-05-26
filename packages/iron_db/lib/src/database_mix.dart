@@ -6,6 +6,9 @@ class DatabaseMix implements Database {
   DatabaseMix(this.list);
 
   @override
+  String getPath() => list.map((e) => e.getPath()).toString();
+
+  @override
   Database sub(String table) {
     return DatabaseMix(list.map((e) => e.sub(table)).toList());
   }

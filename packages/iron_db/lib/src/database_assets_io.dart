@@ -33,6 +33,9 @@ class DatabaseAssetsIO implements Database {
   }
 
   @override
+  String getPath() => folder.path;
+
+  @override
   Database sub(String table) {
     table = subSerializer.serialize(table);
     return DatabaseAssetsIO(folder, resolve(prefix, table), dataSerializer);

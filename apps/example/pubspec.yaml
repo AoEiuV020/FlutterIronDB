@@ -10,6 +10,7 @@ dependencies:
   get: 4.6.6
   flutter: 
     sdk: flutter
+  iron_db: ^0.0.1
 
 dev_dependencies: 
   flutter_lints: 4.0.0

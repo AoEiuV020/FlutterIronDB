@@ -16,4 +16,9 @@ class DatabaseStub implements Database {
 
   @override
   Future<void> drop() async {}
+
+  @override
+  String getPath() {
+    return '';
+  }
 }

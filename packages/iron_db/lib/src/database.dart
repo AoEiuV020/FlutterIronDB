@@ -6,4 +6,6 @@ abstract interface class Database {
   Future<T?> read<T>(String key);
 
   Future<void> drop();
+
+  String getPath();
 }

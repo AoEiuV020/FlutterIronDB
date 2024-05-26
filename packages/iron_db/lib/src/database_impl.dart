@@ -20,6 +20,9 @@ class DatabaseImpl implements Database {
   }
 
   @override
+  String getPath() => folder.path;
+
+  @override
   Database sub(String table) {
     final base = path.join(folder.path, table);
     return DatabaseImpl(base, keySerializer, dataSerializer);

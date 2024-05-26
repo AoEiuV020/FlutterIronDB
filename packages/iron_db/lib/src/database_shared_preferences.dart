@@ -26,6 +26,9 @@ class DatabaseSharedPreferences implements Database {
   }
 
   @override
+  String getPath() => '$base/$prefix';
+
+  @override
   Database sub(String table) {
     table = subSerializer.serialize(table);
     return DatabaseSharedPreferences(base, resolve(prefix, table),

@@ -35,6 +35,9 @@ class DatabaseAssets implements Database {
   }
 
   @override
+  String getPath() => '$folder/$prefix';
+
+  @override
   Database sub(String table) {
     table = subSerializer.serialize(table);
     return DatabaseAssets(folder, resolve(prefix, table), dataSerializer);
