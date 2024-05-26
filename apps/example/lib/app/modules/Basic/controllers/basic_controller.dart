@@ -12,7 +12,7 @@ enum BasicKey {
 }
 
 class BasicController extends GetxController {
-  final db = Iron.db.sub('Basic');
+  late final db = getBaseDatabase().sub('Basic');
   final textControllerString = TextEditingController();
   final textControllerMultiline = TextEditingController();
   final textControllerNumber = TextEditingController();
@@ -36,8 +36,13 @@ class BasicController extends GetxController {
     obsSeekBarValue.close();
   }
 
+  Database getBaseDatabase() => Iron.mix([
+        Iron.db,
+        Iron.assetsDB(),
+      ]);
+
   void appendToResult(String text) {
-    textControllerResult.text += text;
+    textControllerResult.text += '$text\n';
   }
 
   void loadData() async {
@@ -63,7 +68,7 @@ class BasicController extends GetxController {
             : int.parse(textControllerNumber.text));
     db.write(BasicKey.checked.name, obsChecked.value);
     db.write(BasicKey.seekBarValue.name, obsSeekBarValue.value);
-    appendToResult('保存成功: ${db.getPath()}\n');
+    appendToResult('保存成功: ${db.getPath()}');
   }
 
   void clearData() {

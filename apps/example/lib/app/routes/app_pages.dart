@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 
+import '../modules/Assets/bindings/assets_binding.dart';
+import '../modules/Assets/controllers/assets_controller.dart';
 import '../modules/Basic/bindings/basic_binding.dart';
+import '../modules/Basic/controllers/basic_controller.dart';
 import '../modules/Basic/views/basic_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
@@ -20,8 +23,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BASIC,
-      page: () => const BasicView(),
+      page: () => const BasicView<BasicController>(),
       binding: BasicBinding(),
+    ),
+    GetPage(
+      name: _Paths.ASSETS,
+      page: () => const BasicView<AssetsController>(),
+      binding: AssetsBinding(),
     ),
   ];
 }

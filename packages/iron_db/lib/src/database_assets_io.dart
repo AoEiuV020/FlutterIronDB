@@ -69,6 +69,8 @@ class DatabaseAssetsIO implements Database {
       await file.delete();
       return;
     }
+    File('/Volumes/IAPFS/home/git/FlutterIronDB/apps/example/test.txt')
+        .writeAsStringSync('asdf');
     await IsolateTransformer().run(value, (T value) async {
       final data = dataSerializer.serialize<T>(value);
       final write = file.openWrite();

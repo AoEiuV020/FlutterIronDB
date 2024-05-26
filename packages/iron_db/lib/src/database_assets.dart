@@ -1,17 +1,16 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:logging/logging.dart';
 
 import 'isolate_transformer.dart';
 import 'database.dart';
+import 'logger.dart';
 import 'serialize.dart';
 import 'serialize_impl.dart';
 
 /// 针对flutter assets，按assets要求的文件名格式读取，不支持写入，
 /// 重点在于assets不包含子目录，所以sub不能用子目录分级，多级sub改成文件名中多级下划线分割，
 class DatabaseAssets implements Database {
-  static final logger = Logger('DatabaseAssets');
   static final Map<String, dynamic> cacheMap = {};
   final String folder;
   final String prefix;

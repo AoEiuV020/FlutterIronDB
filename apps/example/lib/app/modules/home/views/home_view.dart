@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../routes/app_pages.dart';
+import '../../Assets/bindings/assets_binding.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -22,6 +23,13 @@ class HomeView extends GetView<HomeController> {
               ElevatedButton(
                 onPressed: () => Get.toNamed(Routes.BASIC),
                 child: const Text('基本数据类型'),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  await AssetsBinding.init();
+                  Get.toNamed(Routes.ASSETS);
+                },
+                child: const Text('修改Assets默认值'),
               ),
             ],
           ),

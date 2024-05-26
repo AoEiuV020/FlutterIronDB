@@ -14,3 +14,7 @@ Database getDefaultDatabase(String base, KeySerializer keySerializer,
 Database getDefaultAssetsDatabase(
         String assetsBase, DataSerializer dataSerializer) =>
     DatabaseAssets(assetsBase, '', dataSerializer);
+
+Future<Database> getDebugAssetsDatabase(
+        String assetsBase, DataSerializer dataSerializer) async =>
+    getDefaultAssetsDatabase(assetsBase, dataSerializer);
