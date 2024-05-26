@@ -6,6 +6,7 @@ import 'package:path/path.dart' as path;
 
 import 'isolate_transformer.dart';
 import 'database.dart';
+import 'logger.dart';
 import 'serialize.dart';
 import 'serialize_impl.dart';
 
@@ -39,7 +40,9 @@ class DatabaseAssetsIO implements Database {
   @override
   Database sub(String table) {
     table = subSerializer.serialize(table);
-    return DatabaseAssetsIO(folder, resolve(prefix, table), dataSerializer);
+    final subPrefix = resolve(prefix, table);
+    logger.finer('sub: $folder/$subPrefix');
+    return DatabaseAssetsIO(folder, subPrefix, dataSerializer);
   }
 
   @override

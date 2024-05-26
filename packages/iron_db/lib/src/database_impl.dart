@@ -6,6 +6,7 @@ import 'package:path/path.dart' as path;
 
 import 'isolate_transformer.dart';
 import 'database.dart';
+import 'logger.dart';
 import 'serialize.dart';
 
 class DatabaseImpl implements Database {
@@ -26,6 +27,7 @@ class DatabaseImpl implements Database {
   @override
   Database sub(String table) {
     final base = path.join(folder.path, table);
+    logger.finer('sub: $base');
     return DatabaseImpl(base, keySerializer, dataSerializer);
   }
 

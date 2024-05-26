@@ -39,7 +39,9 @@ class DatabaseAssets implements Database {
   @override
   Database sub(String table) {
     table = subSerializer.serialize(table);
-    return DatabaseAssets(folder, resolve(prefix, table), dataSerializer);
+    final subPrefix = resolve(prefix, table);
+    logger.finer('sub: $folder/$subPrefix');
+    return DatabaseAssets(folder, subPrefix, dataSerializer);
   }
 
   @override

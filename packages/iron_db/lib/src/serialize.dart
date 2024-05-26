@@ -1,7 +1,12 @@
+/// 数据库读写的键本身的序列化接口，
+/// 用于从key得到文件路径这一步，
 abstract interface class KeySerializer {
+  /// 序列化
   String serialize(String key);
 }
 
+/// 子数据库名的序列化接口，
+/// 实际上和key的序列化是一样的，
 typedef SubSerializer = KeySerializer;
 
 /// 序列化数据的接口类，

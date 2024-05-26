@@ -1,7 +1,9 @@
 import 'database.dart';
 import 'serialize.dart';
 
+/// [Iron]的抽象接口，
 abstract interface class IronInterface {
+  /// 初始化，必须调用一次，直接在main开始的时候调用，
   Future<void> init(
       {String? base,
       KeySerializer? keySerializer,

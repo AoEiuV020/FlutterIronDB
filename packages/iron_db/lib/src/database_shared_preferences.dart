@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'database.dart';
+import 'logger.dart';
 import 'serialize.dart';
 
 class DatabaseSharedPreferences implements Database {
@@ -34,8 +35,10 @@ class DatabaseSharedPreferences implements Database {
   @override
   Database sub(String table) {
     table = subSerializer.serialize(table);
-    return DatabaseSharedPreferences(base, resolve(prefix, table),
-        subSerializer, keySerializer, dataSerializer);
+    final subPrefix = resolve(prefix, table);
+    logger.finer('sub: ${base}_$subPrefix');
+    return DatabaseSharedPreferences(
+        base, subPrefix, subSerializer, keySerializer, dataSerializer);
   }
 
   @override

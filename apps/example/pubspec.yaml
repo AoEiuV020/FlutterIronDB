@@ -11,6 +11,7 @@ dependencies:
   flutter: 
     sdk: flutter
   iron_db: ^0.0.1
+  logging: ^1.2.0
 
 dev_dependencies: 
   flutter_lints: 4.0.0

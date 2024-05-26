@@ -9,6 +9,7 @@ import 'database.dart';
 import 'database_assets.dart';
 import 'database_assets_io.dart';
 import 'database_impl.dart';
+import 'logger.dart';
 import 'serialize.dart';
 
 /// linux: /home/<username>/.local/share/<organization>.<app_name>
@@ -29,6 +30,7 @@ Database getDefaultAssetsDatabase(
 Future<Database> getDebugAssetsDatabase(
     String assetsBase, DataSerializer dataSerializer) async {
   if (!kDebugMode) {
+    logger.warning('getDebugAssetsDatabase: not in debug mode');
     return DatabaseAssets(assetsBase, '', dataSerializer);
   }
   String? appProjectPath;
@@ -41,8 +43,10 @@ Future<Database> getDebugAssetsDatabase(
     appProjectPath = await getDirectoryPath(initialDirectory: appProjectPath);
   }
   if (appProjectPath != null) {
-    return DatabaseAssetsIO(
-        Directory(path.join(appProjectPath, assetsBase)), '', dataSerializer);
+    final assetsPath = path.join(appProjectPath, assetsBase);
+    logger.fine('writable assets dir: $assetsPath');
+    return DatabaseAssetsIO(Directory(assetsPath), '', dataSerializer);
   }
+  logger.warning('getDebugAssetsDatabase: no app project path');
   return DatabaseAssets(assetsBase, '', dataSerializer);
 }
