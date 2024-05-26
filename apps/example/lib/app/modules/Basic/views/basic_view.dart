@@ -119,7 +119,7 @@ class BasicView extends GetView<BasicController> {
                           maxLines: null,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
-                            hintText: '',
+                            hintText: '操作日志',
                             hintStyle: TextStyle(color: Colors.grey),
                           ),
                         ),

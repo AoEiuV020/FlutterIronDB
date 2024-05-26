@@ -36,6 +36,10 @@ class BasicController extends GetxController {
     obsSeekBarValue.close();
   }
 
+  void appendToResult(String text) {
+    textControllerResult.text += text;
+  }
+
   void loadData() async {
     textControllerString.text =
         await db.read<String>(BasicKey.string.name) ?? '';
@@ -46,7 +50,7 @@ class BasicController extends GetxController {
     obsChecked.value = await db.read<bool>(BasicKey.checked.name) ?? false;
     obsSeekBarValue.value =
         await db.read<double>(BasicKey.seekBarValue.name) ?? 0.0;
-    textControllerResult.text += '读取成功\n';
+    appendToResult('读取成功');
   }
 
   void saveData() {
@@ -59,7 +63,7 @@ class BasicController extends GetxController {
             : int.parse(textControllerNumber.text));
     db.write(BasicKey.checked.name, obsChecked.value);
     db.write(BasicKey.seekBarValue.name, obsSeekBarValue.value);
-    textControllerResult.text += '保存成功: ${db.getPath()}\n';
+    appendToResult('保存成功: ${db.getPath()}\n');
   }
 
   void clearData() {
@@ -67,9 +71,9 @@ class BasicController extends GetxController {
     textControllerString.text = '';
     textControllerMultiline.text = '';
     textControllerNumber.text = '';
-    textControllerResult.text += '清除成功\n';
     obsChecked.value = false;
     obsSeekBarValue.value = 0;
+    appendToResult('清除成功');
   }
 
   void setChecked(bool value) {
