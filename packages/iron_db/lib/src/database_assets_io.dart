@@ -41,7 +41,7 @@ class DatabaseAssetsIO implements Database {
   Database sub(String table) {
     table = subSerializer.serialize(table);
     final subPrefix = resolve(prefix, table);
-    logger.finer('sub: $folder/$subPrefix');
+    logger.finer('sub: ${getPath()}/$subPrefix');
     return DatabaseAssetsIO(folder, subPrefix, dataSerializer);
   }
 
