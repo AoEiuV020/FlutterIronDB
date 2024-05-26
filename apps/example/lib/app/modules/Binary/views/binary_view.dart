@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../controllers/binary_controller.dart';
 
 class BinaryView extends GetView<BinaryController> {
-  const BinaryView({Key? key}) : super(key: key);
+  const BinaryView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

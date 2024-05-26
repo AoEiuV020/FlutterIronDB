@@ -61,16 +61,16 @@ class BasicController extends GetxController {
 
   void saveData() {
     try {
-    db.write(Keys.string.name, textControllerString.text);
-    db.write(Keys.multiline.name, textControllerMultiline.text);
-    db.write(
-        Keys.number.name,
-        textControllerNumber.text.isEmpty
-            ? null
-            : int.parse(textControllerNumber.text));
-    db.write(Keys.checked.name, obsChecked.value);
-    db.write(Keys.seekBarValue.name, obsSeekBarValue.value);
-    appendToResult('保存成功: ${db.getPath()}');
+      db.write(Keys.string.name, textControllerString.text);
+      db.write(Keys.multiline.name, textControllerMultiline.text);
+      db.write(
+          Keys.number.name,
+          textControllerNumber.text.isEmpty
+              ? null
+              : int.parse(textControllerNumber.text));
+      db.write(Keys.checked.name, obsChecked.value);
+      db.write(Keys.seekBarValue.name, obsSeekBarValue.value);
+      appendToResult('保存成功: ${db.getPath()}');
     } catch (e, s) {
       logger.severe('保存失败', e, s);
       appendToResult('保存失败: $e');
