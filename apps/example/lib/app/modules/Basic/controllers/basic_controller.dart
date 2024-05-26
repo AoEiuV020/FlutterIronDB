@@ -37,12 +37,15 @@ class BasicController extends GetxController {
   }
 
   void loadData() async {
-    textControllerString.text = await db.read<String>(BasicKey.string.name) ?? '';
-    textControllerMultiline.text = await db.read<String>(BasicKey.multiline.name) ?? '';
+    textControllerString.text =
+        await db.read<String>(BasicKey.string.name) ?? '';
+    textControllerMultiline.text =
+        await db.read<String>(BasicKey.multiline.name) ?? '';
     textControllerNumber.text =
         (await db.read<int>(BasicKey.number.name))?.toString() ?? '';
     obsChecked.value = await db.read<bool>(BasicKey.checked.name) ?? false;
-    obsSeekBarValue.value = await db.read<double>(BasicKey.seekBarValue.name) ?? 0.0;
+    obsSeekBarValue.value =
+        await db.read<double>(BasicKey.seekBarValue.name) ?? 0.0;
     textControllerResult.text += '读取成功\n';
   }
 
