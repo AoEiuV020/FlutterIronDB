@@ -38,4 +38,3 @@ expect(value, 'value');
 ## TODO
 - web异步处理数据支持，目前只有isolate异步支持，
 - 支持Stream流数据存取，暂不确定需求，没有设计，
-- web以外支持以文件形式读取assets，
