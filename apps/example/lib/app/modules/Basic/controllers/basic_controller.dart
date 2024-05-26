@@ -17,10 +17,6 @@ class BasicController extends GetxController {
     loadData();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {

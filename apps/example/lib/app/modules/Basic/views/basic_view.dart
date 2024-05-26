@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../controllers/basic_controller.dart';
 
 class BasicView extends GetView<BasicController> {
-  const BasicView({Key? key}) : super(key: key);
+  const BasicView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
