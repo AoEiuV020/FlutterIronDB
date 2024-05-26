@@ -21,7 +21,7 @@ class HomeView extends GetView<HomeController> {
             children: [
               ElevatedButton(
                 onPressed: () => Get.toNamed(Routes.BASIC),
-                child: Text('Basic'),
+                child: Text('基本数据类型'),
               ),
             ],
           ),

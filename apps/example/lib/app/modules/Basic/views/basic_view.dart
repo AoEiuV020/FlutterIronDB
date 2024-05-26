@@ -11,7 +11,7 @@ class BasicView extends GetView<BasicController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BasicView'),
+        title: const Text('基本数据类型'),
         centerTitle: true,
       ),
       body: Padding(
@@ -44,15 +44,29 @@ class BasicView extends GetView<BasicController> {
                     controller: controller.textControllerNumber,
                     maxLines: 1,
                     keyboardType: TextInputType.number,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.allow(RegExp(r'^-?\d*\.?\d*'))
-                    ],
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: '输入数字',
                       hintStyle: TextStyle(color: Colors.grey),
                     ),
                   ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Obx(() => Checkbox(
+                      value: controller.obsChecked.value,
+                      onChanged: (v) => controller.setChecked(v!),
+                    )),
+                Expanded(
+                  child: Obx(() => Slider(
+                        value: controller.obsSeekBarValue.value,
+                        min: 0,
+                        max: 100,
+                        onChanged: controller.setSeekBarValue,
+                      )),
                 ),
               ],
             ),

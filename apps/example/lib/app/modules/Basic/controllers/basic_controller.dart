@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iron_db/iron_db.dart';
@@ -8,15 +9,17 @@ class BasicController extends GetxController {
   final textControllerMultiline = TextEditingController();
   final textControllerNumber = TextEditingController();
   final textControllerResult = TextEditingController();
+  final obsChecked = false.obs;
+  final obsSeekBarValue = 0.0.obs;
   @override
   void onInit() {
     super.onInit();
+    loadData();
   }
 
   @override
   void onReady() {
     super.onReady();
-    loadData();
   }
 
   @override
@@ -26,24 +29,30 @@ class BasicController extends GetxController {
     textControllerMultiline.dispose();
     textControllerNumber.dispose();
     textControllerResult.dispose();
+    obsChecked.close();
+    obsSeekBarValue.close();
   }
 
   void loadData() async {
-    textControllerString.text = await db.read<String>('String') ?? '';
-    textControllerMultiline.text = await db.read<String>('Multiline') ?? '';
+    textControllerString.text = await db.read<String>('string') ?? '';
+    textControllerMultiline.text = await db.read<String>('multiline') ?? '';
     textControllerNumber.text =
-        (await db.read<double>('Number'))?.toString() ?? '';
+        (await db.read<int>('number'))?.toString() ?? '';
+    obsChecked.value = await db.read<bool>('checked') ?? false;
+    obsSeekBarValue.value = await db.read<double>('seekBarValue') ?? 0.0;
     textControllerResult.text += '读取成功\n';
   }
 
   void saveData() {
-    db.write('String', textControllerString.text);
-    db.write('Multiline', textControllerMultiline.text);
+    db.write('string', textControllerString.text);
+    db.write('multiline', textControllerMultiline.text);
     db.write(
-        'Number',
+        'number',
         textControllerNumber.text.isEmpty
             ? null
-            : double.parse(textControllerNumber.text));
+            : int.parse(textControllerNumber.text));
+    db.write('checked', obsChecked.value);
+    db.write('seekBarValue', obsSeekBarValue.value);
     textControllerResult.text += '保存成功: ${db.getPath()}\n';
   }
 
@@ -53,5 +62,15 @@ class BasicController extends GetxController {
     textControllerMultiline.text = '';
     textControllerNumber.text = '';
     textControllerResult.text += '清除成功\n';
+    obsChecked.value = false;
+    obsSeekBarValue.value = 0;
+  }
+
+  void setChecked(bool value) {
+    obsChecked.value = value;
+  }
+
+  void setSeekBarValue(double value) {
+    obsSeekBarValue.value = value;
   }
 }
