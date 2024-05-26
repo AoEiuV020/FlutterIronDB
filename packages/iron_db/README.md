@@ -24,6 +24,7 @@ flutter pub add iron_db
 ## Usage
 [iron_db_test.dart](./test/iron_db_test.dart)
 ```dart
+WidgetsFlutterBinding.ensureInitialized();
 await Iron.init();
 final db = Iron.db.sub('string');
 String? value = 'value';
