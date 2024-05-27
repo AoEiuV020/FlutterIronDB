@@ -1,39 +1,22 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+## iron_db_debug
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+扩展iron_db，增加调试数据功能
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```shell
+flutter pub add iron_db_debug
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+import 'package:iron_db_debug/iron_db_debug.dart';
+final Database db = await Iron.debugAssetsDB();
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+独立出库主要是调试功能要读写项目assets目录在mac端依赖了file_selector,   
+这个是iron_db不必要的依赖不应该传递给iron_db的用户，  
+不需要的就不要依赖iron_db_debug，  
