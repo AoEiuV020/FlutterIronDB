@@ -1,6 +1,6 @@
 name: iron_db_debug
 description: "Expand iron_db, add debug data functionality."
-version: 0.0.4
+version: 0.1.0
 repository: https://github.com/AoEiuV020/FlutterIronDB/tree/main/packages/iron_db_debug
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   file_selector: ^1.0.3
   flutter:
     sdk: flutter
-  iron_db: ^0.0.3
+  iron_db: any
   logging: ^1.2.0
   path: ^1.9.0
 
