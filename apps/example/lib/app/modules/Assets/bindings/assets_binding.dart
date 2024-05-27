@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:iron_db/iron_db.dart';
+import 'package:iron_db_debug/iron_db_debug.dart';
 
 import '../controllers/assets_controller.dart';
 

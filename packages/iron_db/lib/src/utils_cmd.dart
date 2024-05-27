@@ -21,7 +21,3 @@ Database getDefaultDatabase(String base, KeySerializer keySerializer,
 Database getDefaultAssetsDatabase(
         String assetsBase, DataSerializer dataSerializer) =>
     DatabaseAssetsIO(Directory(assetsBase), '', dataSerializer);
-
-Future<Database> getDebugAssetsDatabase(
-        String assetsBase, DataSerializer dataSerializer) async =>
-    getDefaultAssetsDatabase(assetsBase, dataSerializer);

@@ -9,7 +9,6 @@ environment:
 
 dependencies:
   crypto: ^3.0.3
-  file_selector: ^1.0.3
   flutter:
     sdk: flutter
   logging: ^1.2.0

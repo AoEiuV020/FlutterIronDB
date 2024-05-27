@@ -9,13 +9,13 @@
 
 ## Features
 
-1. 多级目录文件形式保存数据，一个key就是一个文件，方便保存超大的value,
+1. 多级目录文件形式保存数据，一个key就是一个文件，方便人工处理，
 1. web支持，但使用SharedPreferences凑合，
 1. 支持从assets读取数据，并可以命令行程序写入数据到assets目录，
 1. 可自定义路径序列化方式，默认是简单把key中不能作为路径的字符删除，
 1. 可自定义数据序列化方式，默认使用json序列化，支持基本数据类型，
-1. 默认字符串类型数据会原原本本写入到文件，utf8编码，可修改，
-1. 类型由开发者自己把握，保存double读取int会抛运行时异常，
+1. 默认String和Uint8List数据会原原本本写入到文件，可修改，
+1. 类型由开发者自己把握，保存double读取int会抛运行时异常，注意泛型类型推断，
 
 ## Getting started
 
@@ -26,6 +26,7 @@ flutter pub add iron_db
 ## Usage
 [iron_db_test.dart](./test/iron_db_test.dart)
 ```dart
+import 'package:iron_db/iron_db.dart';
 WidgetsFlutterBinding.ensureInitialized();
 await Iron.init();
 final db = Iron.db.sub('string');

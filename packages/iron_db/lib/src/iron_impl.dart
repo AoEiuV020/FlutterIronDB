@@ -39,11 +39,6 @@ class IronImpl implements IronInterface {
   }
 
   @override
-  Future<Database> debugAssetsDB([String assetsBase = 'assets/IronDB']) {
-    return getDebugAssetsDatabase(assetsBase, dataSerializer);
-  }
-
-  @override
   Database mix(List<Database> list) {
     return DatabaseMix(list);
   }

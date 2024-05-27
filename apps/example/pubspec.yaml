@@ -11,6 +11,7 @@ dependencies:
   flutter: 
     sdk: flutter
   iron_db: ^0.0.1
+  iron_db_debug: ^0.0.1
   logging: ^1.2.0
   convert: ^3.1.1
 

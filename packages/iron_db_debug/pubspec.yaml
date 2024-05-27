@@ -1,0 +1,23 @@
+name: iron_db_debug
+description: "A new Flutter package project."
+version: 0.0.1
+repository: https://github.com/AoEiuV020/FlutterIronDB/tree/main/packages/iron_db_debug
+
+environment:
+  sdk: '>=3.4.1 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  file_selector: ^1.0.3
+  flutter:
+    sdk: flutter
+  iron_db: ^0.0.3
+  logging: ^1.2.0
+  path: ^1.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
