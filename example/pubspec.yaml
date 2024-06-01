@@ -10,8 +10,10 @@ dependencies:
   get: 4.6.6
   flutter: 
     sdk: flutter
-  iron_db: any
-  iron_db_debug: any
+  iron_db:
+    path: ../
+  iron_db_debug:
+    path: ../packages/iron_db_debug
   logging: ^1.2.0
   convert: ^3.1.1
 
