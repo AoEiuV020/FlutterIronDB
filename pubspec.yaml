@@ -1,6 +1,6 @@
 name: iron_db
 description: "A simple and convenient key-value database."
-version: 0.1.1
+version: 0.2.0
 repository: https://github.com/AoEiuV020/FlutterIronDB
 
 environment:
