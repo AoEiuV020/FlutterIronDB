@@ -12,14 +12,16 @@ class IronImpl implements IronInterface {
   bool _init = false;
   late final String base;
   late final KeySerializer keySerializer;
+  late final SubSerializer subSerializer;
   late final DataSerializer dataSerializer;
   @override
   late final Database db =
-      getDefaultDatabase(base, keySerializer, dataSerializer);
+      getDefaultDatabase(base, subSerializer, keySerializer, dataSerializer);
 
   @override
   Future<void> init(
       {String? base,
+      SubSerializer? subSerializer,
       KeySerializer? keySerializer,
       DataSerializer? dataSerializer}) async {
     if (_init) {
@@ -30,6 +32,7 @@ class IronImpl implements IronInterface {
     this.base = base ??= await getDefaultBase();
     logger.fine('init base: $base');
     this.keySerializer = keySerializer ?? const ReplaceFileSeparator();
+    this.subSerializer = subSerializer ?? this.keySerializer;
     this.dataSerializer = dataSerializer ?? const DefaultDataSerializer();
   }
 

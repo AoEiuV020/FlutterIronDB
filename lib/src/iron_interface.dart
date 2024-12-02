@@ -6,6 +6,7 @@ abstract interface class IronInterface {
   /// 初始化，必须调用一次，直接在main开始的时候调用，
   Future<void> init(
       {String? base,
+      SubSerializer? subSerializer,
       KeySerializer? keySerializer,
       DataSerializer? dataSerializer});
 

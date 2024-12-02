@@ -14,9 +14,13 @@ Future<String> getDefaultBase() async {
   return path.join(folder.path, 'IronDB');
 }
 
-Database getDefaultDatabase(String base, KeySerializer keySerializer,
-        DataSerializer dataSerializer) =>
-    DatabaseImpl(base, keySerializer, dataSerializer);
+Database getDefaultDatabase(
+  String base, 
+  SubSerializer subSerializer,
+  KeySerializer keySerializer,
+  DataSerializer dataSerializer
+) =>
+    DatabaseImpl(base, keySerializer, subSerializer, dataSerializer);
 
 Database getDefaultAssetsDatabase(
         String assetsBase, DataSerializer dataSerializer) =>

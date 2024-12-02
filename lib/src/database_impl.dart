@@ -11,14 +11,17 @@ import 'serialize.dart';
 
 class DatabaseImpl implements Database {
   final Directory folder;
+  final SubSerializer subSerializer;
   final KeySerializer keySerializer;
   final DataSerializer dataSerializer;
 
-  DatabaseImpl._(this.folder, this.keySerializer, this.dataSerializer);
+  DatabaseImpl._(
+      this.folder, this.subSerializer, this.keySerializer, this.dataSerializer);
 
-  factory DatabaseImpl(
-      String base, KeySerializer keySerializer, DataSerializer dataSerializer) {
-    return DatabaseImpl._(Directory(base), keySerializer, dataSerializer);
+  factory DatabaseImpl(String base, SubSerializer subSerializer,
+      KeySerializer keySerializer, DataSerializer dataSerializer) {
+    return DatabaseImpl._(
+        Directory(base), subSerializer, keySerializer, dataSerializer);
   }
 
   @override
@@ -26,9 +29,10 @@ class DatabaseImpl implements Database {
 
   @override
   Database sub(String table) {
-    final base = path.join(folder.path, table);
+    final serializedTable = subSerializer.serialize(table);
+    final base = path.join(folder.path, serializedTable);
     logger.finer('sub: $base');
-    return DatabaseImpl(base, keySerializer, dataSerializer);
+    return DatabaseImpl(base, subSerializer, keySerializer, dataSerializer);
   }
 
   @override
