@@ -1,0 +1,6 @@
+dependencies: 
+  cupertino_icons: ^1.0.6
+  get: 4.6.6
+  flutter: 
+    sdk: flutter
+  iron_db: ^0.0.1
