@@ -10,7 +10,7 @@ class ReplaceFileSeparator implements KeySerializer {
 
   @override
   String serialize(String key) {
-    RegExp specialChars = RegExp(r'[/\\:|=?";\[\],^]');
+    RegExp specialChars = RegExp(r'[\\/:*?"<>|\s]');
     return key.replaceAll(specialChars, '');
   }
 }
